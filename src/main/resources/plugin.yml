@@ -1,0 +1,4 @@
+name: FishBotPlugin
+main: moe.orangemc.fishbot.FishBotPlugin
+version: 0.0.1
+kind: LOADER
