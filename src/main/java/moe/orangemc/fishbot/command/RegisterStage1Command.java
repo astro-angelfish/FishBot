@@ -51,7 +51,7 @@ public class RegisterStage1Command extends SimpleCommand {
             }
 
             registrationManager.put(id, name);
-            sender.sendMessage("注册第一步完成, 请加好友并私聊FishBot \"/confirm 密码\" 以完成注册" + SuffixGenerator.getSuffix());
+            sender.sendMessage("注册第一步完成, 请加FishBot好友并私聊FishBot \"/confirm 密码\" 以完成注册, 如果要取消注册，请输入/cancel" + SuffixGenerator.getSuffix());
         } catch (Exception e) {
             e.printStackTrace();
             sender.sendMessage("发生了不好的事情！请联系Lucky_fish0w0进行错误排查" + SuffixGenerator.getSuffix());

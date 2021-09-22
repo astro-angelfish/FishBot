@@ -9,10 +9,7 @@ import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.contact.Group;
 import net.mamoe.mirai.event.EventHandler;
 import net.mamoe.mirai.event.ListenerHost;
-import net.mamoe.mirai.event.events.BotInvitedJoinGroupRequestEvent;
-import net.mamoe.mirai.event.events.MemberLeaveEvent;
-import net.mamoe.mirai.event.events.NewFriendRequestEvent;
-import net.mamoe.mirai.event.events.NudgeEvent;
+import net.mamoe.mirai.event.events.*;
 
 public class BotEventListener implements ListenerHost {
     @EventHandler
@@ -39,6 +36,14 @@ public class BotEventListener implements ListenerHost {
         if (player != null) {
             player.setBanned(true, "擅自退群");
         }
+    }
+
+    @EventHandler
+    public void onMemberEnter(MemberJoinEvent event) {
+        if (!WhiteList.isGroupWhitelisted(event.getGroupId())) {
+            return;
+        }
+        event.getGroup().sendMessage("Lucky_fish叫我来欢迎新成员，请使用/register指令完成帐号注册，有问题就@管理");
     }
 
     @EventHandler

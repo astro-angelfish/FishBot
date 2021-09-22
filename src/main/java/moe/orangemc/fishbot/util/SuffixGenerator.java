@@ -9,7 +9,7 @@ public class SuffixGenerator {
     private static final Random generator = new Random();
 
     public static String getSuffix() {
-        if (generator.nextInt(100) < 3) {
+        if (generator.nextDouble() < 0.05) {
             return suffixes.get(generator.nextInt(suffixes.size()));
         }
         return "";

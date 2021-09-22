@@ -44,6 +44,9 @@ public class PlayerDatabase {
             PreparedStatement ps = preparedStatementMap.get(SqlStatement.SELECT_USER_BY_QQ);
             ps.setLong(1, qq);
             ResultSet rs = ps.executeQuery();
+            if (!rs.next()) {
+                return null;
+            }
             return new Player(this, rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getLong("bound_qq"), rs.getBoolean("banned"), rs.getString("ban_reason"));
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,6 +59,9 @@ public class PlayerDatabase {
             PreparedStatement ps = preparedStatementMap.get(SqlStatement.SELECT_USER_BY_NAME);
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
+            if (!rs.next()) {
+                return null;
+            }
             return new Player(this, rs.getInt("id"), rs.getString("name"), rs.getString("password"), rs.getLong("bound_qq"), rs.getBoolean("banned"), rs.getString("ban_reason"));
         } catch (Exception e) {
             e.printStackTrace();
